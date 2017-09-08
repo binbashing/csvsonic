@@ -12,8 +12,8 @@ sys.setdefaultencoding('utf-8')
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--server', help='SubSonic URL', required=True)
 parser.add_argument('-u', '--username', help='Username', required=True)
-parser.add_argument('-p', '--password', '-p', help='Password', required=True)
-parser.add_argument('-o', '--outfile', '-o', help='Output File', required=True)
+parser.add_argument('-p', '--password', help='Password', required=True)
+parser.add_argument('-o', '--outfile', help='Output File', required=True)
 args = parser.parse_args()
 
 # Define variables
