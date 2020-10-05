@@ -1,3 +1,4 @@
+import hashlib
 from urllib2 import urlopen
 import ssl
 import json
@@ -16,8 +17,12 @@ parser.add_argument('-p', '--password', help='Password', required=True)
 parser.add_argument('-o', '--outfile', help='Output File', required=True)
 args = parser.parse_args()
 
+salt = 'qpxzm'
+auth_token = args.password + salt
+auth_token = hashlib.md5(auth_token)
+
 # Define variables
-url_end = "u=%s&p=%s&v=1.14.0&c=myapp&f=json" % (args.username, args.password)
+url_end = "u=%s&t=%s&s=%s&v=1.16.1&c=myapp&f=json" % (args.username, auth_token.hexdigest(), salt)
 url_start = "%s/rest/" % (args.server)
 output_csv = (args.outfile)
 
